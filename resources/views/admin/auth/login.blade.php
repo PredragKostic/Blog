@@ -34,8 +34,13 @@
           <div class="form-group">
             <div class="form-label-group">
 
-              <input type="email" id="inputEmail" class="form-control" required="required" name="email" value="{{ old('email') }}">
+              <input type="email" id="inputEmail" class="form-control @error('email') is-invalid @enderror" required="required" name="email" value="{{ old('email') }}">
               <label for="inputEmail">Email address</label>
+              @error('email')
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+              @enderror
               
             </div>
           </div>
