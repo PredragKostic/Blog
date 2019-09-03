@@ -26,6 +26,9 @@
   </div>
 
   <div class="form-group">
+    @if($user->image)
+      <img src="{{ url('storage/' . $user->image) }}" alt="{{ $user->name }}" width="200" height="auto">
+    @endif
     <label for="image">Image</label>
     <input type="file" class="form-control" id="image" placeholder="Image" name="image">
   </div>
