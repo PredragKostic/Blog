@@ -17,16 +17,31 @@
 	<div class="form-group">
     <label for="name">Name</label>
     <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+    @if($errors->has('name'))
+        <span class="invalid-feedback" role="alert" style="display: block;">
+            <strong>{{ $errors->first('name') }}</strong>
+        </span>
+    @endif
   </div>
 
   <div class="form-group">
   	<label for="exmail">Email address</label>
     <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+    @if($errors->has('email'))
+        <span class="invalid-feedback" role="alert" style="display: block;">
+            <strong>{{ $errors->first('email') }}</strong>
+        </span>
+    @endif
     </div>
 
   <div class="form-group">
     <label for="password">Password</label>
     <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password">
+    @if($errors->has('password'))
+        <span class="invalid-feedback" role="alert" style="display: block;">
+            <strong>{{ $errors->first('password') }}</strong>
+        </span>
+    @endif
   </div>
 
   <div class="form-group">
@@ -37,6 +52,11 @@
   <div class="form-group">
     <label for="image">Image</label>
     <input type="file" class="form-control" id="image" placeholder="Image" name="image">
+    @if($errors->has('image'))
+        <span class="invalid-feedback" role="alert" style="display: block;">
+            <strong>{{ $errors->first('image') }}</strong>
+        </span>
+    @endif
   </div>
 
   <div class="form-group">
@@ -46,6 +66,11 @@
       <option value="1">Admin</option>
      
     </select>
+   @if($errors->has('admin'))
+        <span class="invalid-feedback" role="alert" style="display: block;">
+            <strong>{{ $errors->first('admin') }}</strong>
+        </span>
+    @endif
   </div>
 
   <div class="form-group form-check">
