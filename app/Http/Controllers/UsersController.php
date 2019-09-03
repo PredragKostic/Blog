@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\File;
+use App\Http\Requests\CreateUserRequest;
 
 class UsersController extends Controller
 {
@@ -17,7 +18,7 @@ class UsersController extends Controller
     	return view('admin.users.create');
     }
 
-    public function store() {
+    public function store(CreateUserRequest $request) {
     	$user = new User();
     	$user->name = request('name');
     	$user->email = request('email');
@@ -35,7 +36,7 @@ class UsersController extends Controller
     	return view('admin.users.edit', compact('user'));
     }
 
-    public function update($id){
+    public function update(CreateUserRequest $request, $id){
     	$user = User::find($id);
     	$user->name = request('name');
     	$user->email = request('email');
