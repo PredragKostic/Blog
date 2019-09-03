@@ -2,6 +2,16 @@
 
 @section('content')
 
+ <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="{{ url('admin/home') }}">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a href="{{ url('admin/users') }}">Users</a>
+      </li>
+    <li class="breadcrumb-item active">Create</li>
+ </ol>
+
 <form method="POST" enctype="multipart/form-data" action="{{ route('users.store') }}">
 	@csrf
 	<div class="form-group">

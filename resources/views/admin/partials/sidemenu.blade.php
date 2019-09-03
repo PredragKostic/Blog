@@ -12,14 +12,8 @@
         <span>Users</span>
       </a>
       <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-        <h6 class="dropdown-header">Login Screens:</h6>
-        <a class="dropdown-item" href="login.html">Login</a>
-        <a class="dropdown-item" href="register.html">Register</a>
-        <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
-        <div class="dropdown-divider"></div>
-        <h6 class="dropdown-header">Other Pages:</h6>
-        <a class="dropdown-item" href="404.html">404 Page</a>
-        <a class="dropdown-item" href="blank.html">Blank Page</a>
+        <a class="dropdown-item" href="{{ url('admin/users/create') }}">Create</a>
+        <a class="dropdown-item" href="{{ url('admin/users') }}">View</a>       
       </div>
     </li>
     <li class="nav-item dropdown">
@@ -28,9 +22,8 @@
         <span>Posts</span>
       </a>
       <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-        <h6 class="dropdown-header">Posts Screens:</h6>
-        <a class="dropdown-item" href="login.html">Create</a>
-        <a class="dropdown-item" href="register.html">View</a>
+        <a class="dropdown-item" href="{{ url('admin/posts/create') }}">Create</a>
+        <a class="dropdown-item" href="{{ url('admin/posts') }}">View</a>
         
       </div>
     </li>
@@ -40,9 +33,8 @@
         <span>Categories</span>
       </a>
       <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-        <h6 class="dropdown-header">Categories Screens:</h6>
-        <a class="dropdown-item" href="login.html">Create</a>
-        <a class="dropdown-item" href="register.html">View</a>
+        <a class="dropdown-item" href="{{ url('admin/categories/crrate') }}">Create</a>
+        <a class="dropdown-item" href="{{ url('admin/categories') }}">View</a>
         </div>
     </li>
     <li class="nav-item dropdown">
@@ -51,9 +43,8 @@
         <span>Tags</span>
       </a>
       <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-        <h6 class="dropdown-header">Tags Screens:</h6>
-        <a class="dropdown-item" href="login.html">Create</a>
-        <a class="dropdown-item" href="register.html">View</a>
+        <a class="dropdown-item" href="{{ url('admin/tags/create') }}">Create</a>
+        <a class="dropdown-item" href="{{ url('admin/tags') }}">View</a>
         </div>
     </li>
     <li class="nav-item">
