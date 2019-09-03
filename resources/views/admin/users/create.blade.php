@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form method="POST" action="{{ route('users.store') }}">
+<form method="POST" enctype="multipart/form-data" action="{{ route('users.store') }}">
 	@csrf
 	<div class="form-group">
     <label for="name">Name</label>

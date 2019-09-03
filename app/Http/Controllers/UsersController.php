@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class UsersController extends Controller
 {
     public function index() {
-    	return "lists of users";
+    	$users = User::all();
+    	return view('admin.users.index', compact('users'));
     }
 
     public function create() {
@@ -15,6 +17,6 @@ class UsersController extends Controller
     }
 
     public function store() {
-    	return request()->all();
+    	return request()->file('image');
     }
 }
