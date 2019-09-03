@@ -31,7 +31,7 @@
                 	@foreach($users as $user)
                   <tr>
                     <td>{{ $user->id }}</td>
-                    <td>{{ $user->name }}</td>
+                    <td><a href="{{ url('admin/users/' . $user->id . '/edit') }}">{{ $user->name }}</a></td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->admin }}</td>
                     <td>{{ $user->created_at }}</td>

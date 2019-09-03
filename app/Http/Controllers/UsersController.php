@@ -17,6 +17,31 @@ class UsersController extends Controller
     }
 
     public function store() {
-    	return request()->file('image');
+    	$user = new User();
+    	$user->name = request('name');
+    	$user->email = request('email');
+    	$user->password = bcrypt(request('password'));
+    	$user->admin = request('admin');
+    	$user->block = request()->has('block');
+    	$user->save();
+    	return redirect('admin/users');
+
     }
+
+    public function edit($id) {
+    	$user = User::find($id);
+    	return view('admin.users.edit', compact('user'));
+    }
+
+    public function update($id){
+    	$user = User::find($id);
+    	$user->name = request('name');
+    	$user->email = request('email');
+    	$user->password = bcrypt(request('password'));
+    	$user->admin = request('admin');
+    	$user->block = request()->has('block');
+    	$user->save();
+    	return back();
+    }
+
 }
