@@ -25,6 +25,7 @@
                     <th>Email</th>
                     <th>Admin</th>
                     <th>Created</th>
+                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -35,6 +36,13 @@
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->admin }}</td>
                     <td>{{ $user->created_at }}</td>
+                    <td>
+                    	<form onclick="return confirm('Are you sure you want to delete this item?');" method="POST" action="{{ route('users.destroy' , $user->id) }}">
+                    		@csrf
+                    		@method('DELETE')
+                    		<button type="submit"><i class="fa fa-times" aria-hidden="true"></i></button>
+                    	</form>
+                    </td>
                     
                   </tr>
                   @endforeach
