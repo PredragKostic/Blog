@@ -33,7 +33,7 @@
         <span>Categories</span>
       </a>
       <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-        <a class="dropdown-item" href="{{ url('admin/categories/crrate') }}">Create</a>
+        <a class="dropdown-item" href="{{ url('admin/categories/create') }}">Create</a>
         <a class="dropdown-item" href="{{ url('admin/categories') }}">View</a>
         </div>
     </li>

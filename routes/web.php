@@ -23,3 +23,5 @@ Route::resource('admin/users', 'UsersController');
 
 Route::resource('admin/posts', 'PostsController');
 
+Route::resource('admin/categories', 'CategoriesController');
+
