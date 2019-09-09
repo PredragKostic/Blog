@@ -15,14 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 
 Route::group(['middleware' => ['auth']], function () {
     
     Route::get('admin/home', 'HomeController@index')->name('home');
 
-    Route::resource('admin/users', 'UsersController');
+    Route::resource('admin/users', 'UsersController')->middleware('admin');
 
     Route::resource('admin/posts', 'PostsController');
 
