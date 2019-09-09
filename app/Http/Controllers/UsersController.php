@@ -32,12 +32,12 @@ class UsersController extends Controller
     }
 
     public function edit($id) {
-    	$user = User::find($id);
+    	$user = User::findOrFail($id);
     	return view('admin.users.edit', compact('user'));
     }
 
     public function update(CreateUserRequest $request, $id){
-    	$user = User::find($id);
+    	$user = User::findOrFail($id);
     	$user->name = request('name');
     	$user->email = request('email');
     	$user->password = bcrypt(request('password'));
@@ -53,7 +53,7 @@ class UsersController extends Controller
     }
 
     public function destroy($id){
-    	$user = User::find($id);
+    	$user = User::findOrFail($id);
     	$user->delete();
     	return redirect('admin/users');
     }
