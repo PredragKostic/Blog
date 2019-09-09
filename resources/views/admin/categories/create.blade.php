@@ -2,11 +2,21 @@
 
 @section('content')
 
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="{{ url('admin/home') }}">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a href="{{ url('admin/categories') }}">Categories</a>
+      </li>
+    <li class="breadcrumb-item active">Create</li>
+ </ol>
+
 <form method="POST" action="{{ route('categories.store') }}">
 	@csrf
 	
   <div class="form-group">
-  	<label for="exmail">Email address</label>
+  	<label for="email">Email address</label>
     <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
     </div>
 
@@ -21,8 +31,19 @@
   </div>
 
   <div class="form-group">
+    <label for="slug">Slug</label>
+    <input type="slug" class="form-control" id="slug" placeholder="Slug" name="Slug">
+    <?php str_slug('title', '-'); ?>
+  </div>
+
+   <div class="form-group">
     <label for="description">Description</label>
     <input type="textarea" class="form-control" id="description" placeholder="Description" name="description">
+  </div>
+
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="is_visible" name="is_visible">
+    <label class="form-check-label" for="block">Is Visible</label>
   </div>
 
     

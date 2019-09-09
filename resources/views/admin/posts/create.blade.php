@@ -6,7 +6,7 @@
 	@csrf
 	
   <div class="form-group">
-  	<label for="exmail">Email address</label>
+  	<label for="email">Email address</label>
     <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
     </div>
 
