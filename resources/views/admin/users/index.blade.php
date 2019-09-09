@@ -37,11 +37,13 @@
                     <td>{{ $user->admin }}</td>
                     <td>{{ $user->created_at }}</td>
                     <td>
-                    	<form onclick="return confirm('Are you sure you want to delete this item?');" method="POST" action="{{ route('users.destroy' , $user->id) }}">
-                    		@csrf
-                    		@method('DELETE')
-                    		<button type="submit"><i class="fa fa-times" aria-hidden="true"></i></button>
-                    	</form>
+                    	@if($user->admin == 0)
+                      <form onclick="return confirm('Are you sure you want to delete this item?');" method="POST" action="{{ route('users.destroy' , $user->id) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit"><i class="fa fa-times" aria-hidden="true"></i></button>
+                      </form>
+                      @endif
                     </td>
                     
                   </tr>
