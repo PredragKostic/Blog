@@ -10,7 +10,7 @@ use App\Http\Requests\CreateTagRequest;
 class TagsController extends Controller
 {
     public function index() {
-    	$tags = Tag::all();
+    	$tags = Tag::paginate(2);
     	return view('admin.tags.index', compact('tags'));
     }
 

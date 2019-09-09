@@ -53,6 +53,10 @@
           <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
 
+        <div class="container">
+          {{ $users->links() }}
+        </div>
+
         <p class="small text-center text-muted my-5">
           <em>More table examples coming soon...</em>
         </p>
