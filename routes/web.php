@@ -25,3 +25,5 @@ Route::resource('admin/posts', 'PostsController');
 
 Route::resource('admin/categories', 'CategoriesController');
 
+Route::resource('admin/tags', 'TagsController');
+
