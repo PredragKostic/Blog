@@ -17,13 +17,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('admin/home', 'HomeController@index')->name('home');
 
-Route::resource('admin/users', 'UsersController');
+Route::group(['middleware' => ['auth']], function () {
+    
+    Route::get('admin/home', 'HomeController@index')->name('home');
 
-Route::resource('admin/posts', 'PostsController');
+    Route::resource('admin/users', 'UsersController');
 
-Route::resource('admin/categories', 'CategoriesController');
+    Route::resource('admin/posts', 'PostsController');
 
-Route::resource('admin/tags', 'TagsController');
+	Route::resource('admin/categories', 'CategoriesController');
+
+	Route::resource('admin/tags', 'TagsController');
+
+});
 
