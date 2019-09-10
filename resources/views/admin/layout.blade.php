@@ -20,7 +20,7 @@
 
   <!-- Custom styles for this template-->
   <link href="{{ url('admin/css/sb-admin.css') }}" rel="stylesheet">
-
+  @yield('css')
 </head>
 
 <body id="page-top">
@@ -69,8 +69,8 @@
 
   <!-- Page level plugin JavaScript-->
   <script src="{{ url('admin/js/Chart.min.js') }}"></script>
-  <script src="{{ url('admin/js/jquery.dataTables.js') }}"></script>
-  <script src="{{ url('admin/js/dataTables.bootstrap4.js') }}"></script>
+  <!-- <script src="{{ url('admin/js/jquery.dataTables.js') }}"></script> -->
+  <!-- <script src="{{ url('admin/js/dataTables.bootstrap4.js') }}"></script> -->
 
   <!-- Custom scripts for all pages-->
   <script src="{{ url('admin/js/sb-admin.min.js') }}"></script>
@@ -78,6 +78,8 @@
   <!-- Demo scripts for this page-->
   <script src="{{ url('admin/js/datatables-demo.js') }}"></script>
   <script src="{{ url('admin/js/chart-area.js') }}"></script>
+
+   @yield('js')
 
 </body>
 
