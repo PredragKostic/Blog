@@ -15,8 +15,8 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('user_id')->index();
-            $table->bigInteger('category_id')->index();
+            $table->bigInteger('user_id')->unsigned()->index();
+            $table->bigInteger('category_id')->unsigned()->index();
             $table->string('title');
             $table->string('slug')->nullable();
             $table->string('summary')->nullable();
@@ -28,17 +28,11 @@ class CreatePostsTable extends Migration
         });
 
         Schema::create('post_tag', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->bigInteger('user_id')->index();
-            $table->bigInteger('category_id')->index();
-            $table->string('title');
-            $table->string('slug')->nullable();
-            $table->string('summary')->nullable();
-            $table->text('content');
-            $table->integer('views')->default(0);
-            $table->boolean('is_visible')->default(true);
-            $table->timestamp('published_at')->nullable();
-            $table->timestamps();
+            $table->bigInteger('post_id')->unsigned()->index();
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+
+            $table->bigInteger('tag_id')->unsigned()->index();
+            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
         });
     }
 

@@ -16,7 +16,7 @@
 	@csrf
 	<div class="form-group">
     <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" value="{{ old('name') }}">
     @if($errors->has('name'))
         <span class="invalid-feedback" role="alert" style="display: block;">
             <strong>{{ $errors->first('name') }}</strong>
@@ -26,7 +26,7 @@
 
   <div class="form-group">
   	<label for="exmail">Email address</label>
-    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" value="{{ old('email') }}">
     @if($errors->has('email'))
         <span class="invalid-feedback" role="alert" style="display: block;">
             <strong>{{ $errors->first('email') }}</strong>

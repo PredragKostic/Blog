@@ -17,7 +17,7 @@
 	
   <div class="form-group">
     <label for="title">Title</label>
-    <input type="text" class="form-control" id="title" placeholder="Title" name="title">
+    <input type="text" class="form-control" id="title" placeholder="Title" name="title" value="{{ old('title') }}">
     @if($errors->has('title'))
         <span class="invalid-feedback" role="alert" style="display: block;">
             <strong>{{ $errors->first('title') }}</strong>
@@ -27,13 +27,13 @@
 
   <div class="form-group">
     <label for="slug">Slug</label>
-    <input type="slug" class="form-control" id="slug" placeholder="Slug" name="Slug">
+    <input type="slug" class="form-control" id="slug" placeholder="Slug" name="Slug" value="{{ old('slug') }}">
     
   </div>
 
    <div class="form-group">
     <label for="description">Description</label>
-    <textarea class="form-control" id="description" placeholder="Description" name="description"></textarea>
+    <textarea class="form-control" id="description" placeholder="Description" name="description">value="{{ old('description') }}"</textarea>
   </div>
 
   <div class="form-group form-check">
