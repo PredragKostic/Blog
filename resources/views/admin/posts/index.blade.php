@@ -32,7 +32,7 @@
                 	@foreach($posts as $post)
                   <tr>
                     <td>{{ $post->id }}</td>
-                    <td><a href="{{ url('admin/posts/' . $post->id . '/edit') }}">{{ $posty->title }}</a></td>
+                    <td><a href="{{ url('admin/posts/' . $post->id . '/edit') }}">{{ $post->title }}</a></td>
                     <td>{{ $post->slug }}</td>
                     <td>{{ $post->is_visible }}</td>
                     <td>{{ $post->created_at }}</td>

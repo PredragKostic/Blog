@@ -14,4 +14,9 @@ class Tag extends Model
     protected $fillable = [
         'title', 'slug', 'is_visible',
     ];
+
+    public function posts()
+    {
+        return $this->belongsToMany('App\Post');
+    }
 }

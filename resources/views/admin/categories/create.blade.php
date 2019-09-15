@@ -33,7 +33,9 @@
 
    <div class="form-group">
     <label for="description">Description</label>
-    <textarea class="form-control" id="description" placeholder="Description" name="description">value="{{ old('description') }}"</textarea>
+    <textarea class="form-control" id="description" placeholder="Description" name="description">
+      {{ old('description') }}
+    </textarea>
   </div>
 
   <div class="form-group form-check">

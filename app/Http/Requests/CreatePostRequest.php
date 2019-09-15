@@ -13,7 +13,7 @@ class CreatePostRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class CreatePostRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+           'title' => 'required|max:255',
+           'summary' => 'required|max:255',
+           'content' => 'required',
+           'category_id' => 'required|numeric',
+           'published_at' => 'required',
         ];
     }
 }
