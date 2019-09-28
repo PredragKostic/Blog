@@ -12,7 +12,12 @@ use App\Http\Requests\CreatePostRequest;
 class PostsController extends Controller
 {
     public function index() {
-    	$posts = Post::paginate(2);
+        if(auth()->user()->admin){
+            $posts = Post::paginate(2);
+        }else{
+            $posts = Post::where('user_id', auth()->user()->id)->paginate(2);
+        }
+    	
     	return view('admin.posts.index', compact('posts'));
     }
 
@@ -45,6 +50,10 @@ class PostsController extends Controller
     public function edit($id){
     	$post = Post::findOrFail($id);
 
+        if(!auth()->user()->admin || $post->user_id != auth()->user()->id){
+            return redirect('admin/posts');
+        }
+
     	$categories = Category::where('is_visible', 1)->get();
     	$tags = Tag::where('is_visible', 1)->get();
     	return view('admin.posts.edit', compact('categories', 'tags', 'post'));
@@ -52,7 +61,12 @@ class PostsController extends Controller
 
     public function update(CreatePostRequest $request, $id) {
     	
-    	$post = Post::find($id);
+    	$post = Post::findOrFail($id);
+
+        if(!auth()->user()->admin || $post->user_id != auth()->user()->id){
+            return redirect('admin/posts');
+        }
+
     	$post->user_id = auth()->user()->id;
     	$post->title = request('title');
     	$post->category_id = request('category_id');
@@ -72,6 +86,11 @@ class PostsController extends Controller
 
     public function destroy($id){
 		$post = Post::findOrFail($id);
+
+        if(!auth()->user()->admin || $post->user_id != auth()->user()->id){
+            return redirect('admin/posts');
+        }
+
 		$post->delete();
 		return redirect('admin/posts');
     }
