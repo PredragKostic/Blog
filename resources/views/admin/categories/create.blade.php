@@ -15,6 +15,24 @@
 <form method="POST" action="{{ route('categories.store') }}">
 	@csrf
 	
+<div class="form-group">
+    <label for="parent">Parent</label>
+    <select class="form-control" id="parent" name="parent">
+     
+      <option value="{{ null }}">No Parent</option>
+
+      @foreach($categories as $category)
+        <option value="{{ $category->id }}" >{{$category->title}}</option>
+      @endforeach
+     
+    </select>
+   @if($errors->has('admin'))
+        <span class="invalid-feedback" role="alert" style="display: block;">
+            <strong>{{ $errors->first('admin') }}</strong>
+        </span>
+    @endif
+  </div>
+
   <div class="form-group">
     <label for="title">Title</label>
     <input type="text" class="form-control" id="title" placeholder="Title" name="title" value="{{ old('title') }}">

@@ -12,12 +12,17 @@ class Category extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'slug', 'description', 'is_visible',
+        'parent', 'title', 'slug', 'description', 'is_visible',
     ];
 
      public function posts()
     {
         return $this->hasMany('App\Post');
+    }
+
+    public function parentCategory()
+    {
+        return $this->belongsTo('App\Category', 'parent');
     }
 }
 

@@ -22,7 +22,7 @@
                   <tr>
                   	 <th>ID</th>
                     <th>Title</th>
-                    <th>Slug</th>
+                    <th>Parent</th>
                     <th>Is Visible</th>
                     <th>Created</th>
                      <th>Action</th>
@@ -33,7 +33,7 @@
                   <tr>
                     <td>{{ $category->id }}</td>
                     <td><a href="{{ url('admin/categories/' . $category->id . '/edit') }}">{{ $category->title }}</a></td>
-                    <td>{{ $category->slug }}</td>
+                    <td>@if($category->parentCategory){{ $category->parentCategory->title }} @else No Parent @endif</td>
                     <td>{{ $category->is_visible }}</td>
                     <td>{{ $category->created_at }}</td>
                     <td>
