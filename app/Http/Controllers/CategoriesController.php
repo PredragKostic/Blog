@@ -15,11 +15,12 @@ class CategoriesController extends Controller
     // }
 
     public function index() {
-    	$categories = Category::paginate(50);
+    	$categories = Category::with('parentCategory')->paginate(50);
     	return view('admin.categories.index', compact('categories'));
     }
 
     public function create() {
+
         $categories = Category::where('is_visible', 1)->where('parent', null)->get();
     	return view('admin.categories.create', compact('categories'));
     }

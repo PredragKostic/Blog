@@ -39,19 +39,28 @@
                 <nav class="navbar navbar-expand-md bg-secondary p-0">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div class="navbar-nav"><a class="nav-item nav-link active pl-0" href="#">HOME <span class="sr-only">(current)</span></a>
+                        <div class="navbar-nav">
+                            <a class="nav-item nav-link active pl-0" href="#">HOME <span class="sr-only">(current)</span></a>
+
+                            @foreach($categories as $category)
+                            
+                            @if(!empty($category->childCategory))
                             <div class="dropdown bg-secondary">
-                                <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">U FOKUSU</button>
-                                <div class="dropdown-menu bg-secondary" aria-labelledby="dropdownMenuButton"><a class="dropdown-item pl-3" href="#">Intervju</a> <a class="dropdown-item pl-3" href="#">U fokusu</a> <a class="dropdown-item pl-3" href="#">Blog</a></div>
-                            </div>
-                            <div class="dropdown bg-secondary">
-                                <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LEPOTA</button>
-                                <div class="dropdown-menu bg-secondary" aria-labelledby="dropdownMenuButton"><a class="dropdown-item pl-3" href="#">Trendovi</a> <a class="dropdown-item pl-3" href="#">Make Up</a> <a class="dropdown-item pl-3" href="#">Kosa</a> <a class="dropdown-item pl-3" href="#">Nega Kože</a> <a class="dropdown-item pl-3" href="#">Parfemi</a> <a class="dropdown-item pl-3" href="#">Fitnes</a> <a class="dropdown-item pl-3" href="#">Saveti stručnjaka</a></div>
-                            </div>
-                            <div class="dropdown bg-secondary">
-                                <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">SCENA</button>
-                                <div class="dropdown-menu bg-secondary" aria-labelledby="dropdownMenuButton"><a class="dropdown-item pl-3" href="#">Film</a> <a class="dropdown-item pl-3" href="#">Muzika</a> <a class="dropdown-item pl-3" href="#">Knjige</a> <a class="dropdown-item pl-3" href="#">Umetnost</a> <a class="dropdown-item pl-3" href="#">Pozorište</a></div>
-                            </div><a class="nav-item nav-link" href="#">HOROSKOP</a> <a class="nav-item nav-link" href="#">MAGAZIN</a> <a class="nav-item nav-link" href="#">AKCIJE</a> <a class="nav-item nav-link" href="#">PROMO</a> <a class="nav-item nav-link" href="#">CASAVIVA</a> <a class="nav-item nav-link" href="#">GASTRO</a> <a class="nav-item nav-link" href="#">SHOP</a></div>
+                                <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ $category->title }}</button>
+                                
+                                <div class="dropdown-menu bg-secondary" aria-labelledby="dropdownMenuButton">
+                                    @foreach($category->childCategory as $child)
+                                    <a class="dropdown-item pl-3" href="{{ url($category->slug . '/' . $child->slug) }}">{{ $child->title }}</a> 
+                                    @endforeach
+                                </div>
+                             </div>
+                             @else 
+                                <a class="nav-item nav-link" href="{{ url($category->slug) }}">{{ $category->title }}</a>
+                             @endif
+                            @endforeach
+
+                         
+                        </div>
                     </div>
                     <div class="search"><a data-toggle="modal" data-target="" href="#"><i class="fa fa-search"></i></a></div>
                 </nav>
