@@ -4,12 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use App\Post;
 
 class PagesController extends Controller
 {
     public function index(){
     	$categories = Category::with('childCategory')->where('parent', null)->where('is_visible', 1)->get();
-    	return view('grazia.pages.home', compact('categories'));
+
+        $sliders = Post::with('category')->where('is_visible', 1)->orderBy('id', 'desc')->limit(5)->get();
+
+        $hotNews = Post::with('category')->where('is_visible', 1)->orderBy('id', 'desc')->limit(2)->get();
+    	return view('grazia.pages.home', compact('categories', 'sliders', 'hotNews'));
+
     }
 
     public function category($param1){

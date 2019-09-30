@@ -4,24 +4,21 @@
     </div>
 </div>
 <div class="row">
+
+    @foreach($hotNews as $post)
+
     <div class="col-md-6">
         <div class="image-holder mixin">
-            <a href="#"><img src="{{ url('grazia/images/news-img-1.jpg') }}" alt="" id="left"></a>
-            <div class="image-caption"><a class="caption p-1" href="#">MODA</a>
-                <h6>IZGOVORITE SUDBONOSNO DA U PREFINENIM ITALIJANSKIM KREACIJAMA</h6>
-                <p class="date">24. april, 2018</p>
+            <a href="{{ $post->category->getCategoryLink(). '/'. $post->slug. '/'. $post->id }}"><img src="{{ url($post->image2) }}" alt="{{ $post->title }}" id="left"></a>
+            <div class="image-caption"><a class="caption p-1" href="{{ $post->category->getCategoryLink() }}">{{ $post->category->title }}</a>
+                <h6>"{{ $post->title }}"</h6>
+                <p class="date">"{{ $post->published_at }}"</p>
             </div>
             <div class="image-shadow"></div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="image-holder mixin">
-            <a href="#"><img src="{{ url('grazia/images/news-img-2.jpg') }}" alt=""></a>
-            <div class="image-caption"><a class="caption p-1" href="#">Scena</a>
-                <h6>IZGOVORITE SUDBONOSNO DA U PREFINENIM ITALIJANSKIM KREACIJAMA</h6>
-                <p class="date">24. april, 2018</p>
-            </div>
-            <div class="image-shadow"></div>
-        </div>
-    </div>
+
+    @endforeach
+
+    
 </div>

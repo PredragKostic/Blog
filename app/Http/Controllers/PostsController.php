@@ -14,7 +14,7 @@ class PostsController extends Controller
 {
     public function index() {
         if(auth()->user()->admin){
-            $posts = Post::paginate(2);
+            $posts = Post::paginate(50);
         }else{
             $posts = Post::where('user_id', auth()->user()->id)->paginate(2);
         }

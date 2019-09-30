@@ -15,6 +15,17 @@ class Category extends Model
         'parent', 'title', 'slug', 'description', 'is_visible',
     ];
 
+    protected $with = ['parentCategory'];
+
+    public function getCategoryLink(){
+
+        if($this->parent){
+            return url($this->parentCategory->slug . '/'. $this->slug);
+        }else{
+            return url($this->slug);
+        }
+    }
+
      public function posts()
     {
         return $this->hasMany('App\Post');
