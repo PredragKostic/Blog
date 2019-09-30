@@ -25,7 +25,7 @@ class UsersController extends Controller
     	$user->password = bcrypt(request('password'));
     	$user->admin = request('admin');
     	$user->block = request()->has('block');
-    	$user->image = request()->has('image') ? request()->file('image')->store('users') : null;
+    	$user->image = $user->image ? $user->getImagePath('image') : null;
     	$user->save();
     	return redirect('admin/users');
 
@@ -45,7 +45,7 @@ class UsersController extends Controller
     	$user->block = request()->has('block');
     	if(request()->has('image')){
     		File::delete($user->image);
-    		$user->image = request()->file('image')->store('users');
+    		$user->image = $user->getImagePath('image');
 
     	}
     	$user->save();

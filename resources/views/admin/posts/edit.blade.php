@@ -20,7 +20,7 @@
     <li class="breadcrumb-item active">Edit</li>
  </ol>
 
-<form method="POST" action="{{ route('posts.update', $post->id) }}">
+<form method="POST" action="{{ route('posts.update', $post->id) }}" enctype="multipart/form-data">
 	@csrf
 
   @method('PUT')
@@ -75,6 +75,32 @@
     @if($errors->has('summary'))
         <span class="invalid-feedback" role="alert" style="display: block;">
             <strong>{{ $errors->first('summary') }}</strong>
+        </span>
+    @endif
+  </div>
+
+  <div class="form-group">
+    @if($post->image1)
+      <img src="{{ url($post->image1) }}" alt="{{ $post->title }}" width="200" height="auto">
+    @endif
+    <label for="image1">Image1</label>
+    <input type="file" class="form-control" id="image" placeholder="Image1" name="image1">
+    @if($errors->has('image1'))
+        <span class="invalid-feedback" role="alert" style="display: block;">
+            <strong>{{ $errors->first('image1') }}</strong>
+        </span>
+    @endif
+  </div>
+
+  <div class="form-group">
+    @if($post->image2)
+      <img src="{{ url($post->image2) }}" alt="{{ $post->title }}" width="200" height="auto">
+    @endif
+    <label for="image2">Image2</label>
+    <input type="file" class="form-control" id="image2" placeholder="Image2" name="image2">
+    @if($errors->has('image2'))
+        <span class="invalid-feedback" role="alert" style="display: block;">
+            <strong>{{ $errors->first('image2') }}</strong>
         </span>
     @endif
   </div>

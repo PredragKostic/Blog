@@ -13,10 +13,6 @@
 
 Route::get('/', 'PagesController@index');
 
-Route::get('{slug1}', 'PagesController@category');
-    
-Route::get('{slug1}/{slug2}', 'PagesController@parentCategory');
-
 
 Auth::routes(['register' => true]);
 
@@ -34,4 +30,8 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::resource('admin/tags', 'TagsController');
 
 });
+
+Route::get('{slug1}', 'PagesController@category');
+    
+Route::get('{slug1}/{slug2}', 'PagesController@parentCategory');
 

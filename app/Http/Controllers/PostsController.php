@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use App\Category;
 use App\Tag;
 use App\Http\Requests\CreatePostRequest;
+use File;
 
 class PostsController extends Controller
 {
@@ -35,6 +36,8 @@ class PostsController extends Controller
     	$post->category_id = request('category_id');
     	$post->slug = request('slug') ? Str::slug(request('slug')) : Str::slug(request('title'));
     	$post->summary = request('summary');
+        $post->image1 = request()->has('image1') ? $post->getImagePath('image1') : null;
+        $post->image2 = request()->has('image2') ? $post->getImagePath('image2') : null;
     	$post->content = request('content');
     	$post->views = request('views');
     	$post->published_at = request('published_at');
@@ -72,6 +75,18 @@ class PostsController extends Controller
     	$post->category_id = request('category_id');
     	$post->slug = request('slug') ? Str::slug(request('slug')) : Str::slug(request('title'));
     	$post->summary = request('summary');
+        if(request()->has('image1')){
+            File::delete($post->image1);
+            $post->image1 = $post->getImagePath('image1');
+
+        }
+
+        if(request()->has('image2')){
+            File::delete($post->image2);
+            $post->image2 = $post->getImagePath('image2');
+
+        }
+
     	$post->content = request('content');
     	$post->views = request('views');
     	$post->published_at = request('published_at');

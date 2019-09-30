@@ -20,7 +20,7 @@
     <li class="breadcrumb-item active">Create</li>
  </ol>
 
-<form method="POST" action="{{ route('posts.store') }}">
+<form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
 	@csrf
 	
   <div class="form-group">
@@ -73,6 +73,26 @@
     @if($errors->has('summary'))
         <span class="invalid-feedback" role="alert" style="display: block;">
             <strong>{{ $errors->first('summary') }}</strong>
+        </span>
+    @endif
+  </div>
+
+  <div class="form-group">
+    <label for="image1">Image1</label>
+    <input type="file" class="form-control" id="image1" placeholder="Image1" name="image1">
+    @if($errors->has('image1'))
+        <span class="invalid-feedback" role="alert" style="display: block;">
+            <strong>{{ $errors->first('image1') }}</strong>
+        </span>
+    @endif
+  </div>
+
+  <div class="form-group">
+    <label for="image2">Image2</label>
+    <input type="file" class="form-control" id="image2" placeholder="Image2" name="image2">
+    @if($errors->has('image2'))
+        <span class="invalid-feedback" role="alert" style="display: block;">
+            <strong>{{ $errors->first('image2') }}</strong>
         </span>
     @endif
   </div>

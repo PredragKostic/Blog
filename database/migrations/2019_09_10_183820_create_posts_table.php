@@ -20,6 +20,8 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('slug')->nullable();
             $table->string('summary')->nullable();
+            $table->string('image1')->nullable();
+            $table->string('image2')->nullable();
             $table->text('content');
             $table->integer('views')->default(0);
             $table->boolean('is_visible')->default(true);

@@ -2,6 +2,7 @@
 
 namespace App;
 
+
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
@@ -12,8 +13,14 @@ class Post extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'slug', 'user_id', 'category_id', 'summary', 'content', 'is_visible', 'published_at', 'views',
+        'title', 'slug', 'user_id', 'category_id', 'summary', 'image1', 'image2', 'content', 'is_visible', 'published_at', 'views',
     ];
+
+    public function getImagePath($fileName){
+
+        return 'storage/'. request()->file($fileName)->storeAs('posts', $this->slug . '-' . $this->id. $fileName. '.' . request()->file($fileName)->getClientOriginalExtension());
+
+    }
 
     /**
      * Get the post that belongs to user.
