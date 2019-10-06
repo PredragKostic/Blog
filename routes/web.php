@@ -29,9 +29,13 @@ Route::group(['middleware' => ['auth']], function () {
 
 	Route::resource('admin/tags', 'TagsController');
 
+	Route::resource('admin/brands', 'BrandsController');
+
 });
 
 Route::get('{slug1}', 'PagesController@category');
     
 Route::get('{slug1}/{slug2}', 'PagesController@parentCategory');
+
+
 
