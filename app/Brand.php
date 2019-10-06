@@ -6,10 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Brand extends Model
 {
-     @var array
+     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
      */
     protected $fillable = [
-        'title', 'slug','summary','is_visible',
+        'title', 'slug', 'summary', 'is_visible',
     ];
 
     public function brands()
