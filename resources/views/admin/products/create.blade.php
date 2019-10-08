@@ -85,6 +85,15 @@
     @endif
   </div>
 
+ <div class="form-group">
+    <label for="price">Price</label>
+    <input type="text" class="form-control" id="price" placeholder="Price" name="price" value="{{ old('price') }}">
+    @if($errors->has('price'))
+        <span class="invalid-feedback" role="alert" style="display: block;">
+            <strong>{{ $errors->first('price') }}</strong>
+        </span>
+    @endif
+  </div>
   
   <div class="form-group">
     <label for="published_at">Published At</label>

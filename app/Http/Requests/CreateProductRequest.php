@@ -24,7 +24,10 @@ class CreateProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:255'
+            'title' => 'required|max:255',
+            'brand_id' => 'required|numeric',
+            'price' => 'required|numeric',
+            'image' => 'image|mimes:jpg,jpeg,png,gif',
         ];
     }
 }

@@ -52,6 +52,7 @@ class ProductsController extends Controller
         $product->description = request('description');
         $product->image = request()->has('image') ? $product->getImagePath('image') : null;
         $product->views = request('views');
+        $product->price = request('price');
         $product->published_at = request('published_at');
         $product->is_visible = request()->has('is_visible');
         
@@ -106,6 +107,7 @@ class ProductsController extends Controller
 
         
         $product->views = request('views');
+        $product->price = request('price');
         $product->published_at = request('published_at');
         $product->is_visible = request()->has('is_visible');
         

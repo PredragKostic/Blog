@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->string('description')->nullable();
             $table->string('image')->nullable();
             $table->integer('views')->default(0);
+            $table->integer('price');
             $table->boolean('is_visible')->default(true);
             $table->timestamp('published_at')->nullable();
             $table->timestamps();

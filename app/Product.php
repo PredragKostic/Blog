@@ -13,7 +13,7 @@ class Product extends Model
      */
     
     protected $fillable = [
-        'title', 'slug', 'user_id', 'brand_id', 'description', 'image', 'is_visible', 'published_at', 'views',
+        'title', 'slug', 'user_id', 'brand_id', 'description', 'image', 'is_visible', 'published_at', 'views', 'price',
     ];
 
     public function getImagePath($fileName){
