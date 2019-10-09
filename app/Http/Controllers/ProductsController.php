@@ -76,7 +76,7 @@ class ProductsController extends Controller
 
         $brands = Brand::where('is_visible', 1)->get();
         
-        return view('admin.products.edit', compact('brands', 'products'));
+        return view('admin.products.edit', compact('brands', 'product'));
     }
 
     /**

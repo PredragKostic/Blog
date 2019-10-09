@@ -4,6 +4,7 @@
     </div>
 </div>
 <div class="row">
+    
 
     @foreach($hotNews as $post)
 

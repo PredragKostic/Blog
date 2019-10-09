@@ -21,7 +21,12 @@ class Product extends Model
         return 'storage/'. request()->file($fileName)->storeAs('products', $this->slug . '-' . $this->id. $fileName. '.' . request()->file($fileName)->getClientOriginalExtension());
 
     }
-	/**
+
+    public function getProductLink(){
+        return url('shop/' . $this->brand->slug . '/'. $this->slug .'/' . $this->id );
+    }
+
+    	/**
      * Get the product that belongs to user.
      */
     public function user()

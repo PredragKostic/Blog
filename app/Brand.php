@@ -15,6 +15,8 @@ class Brand extends Model
         'title', 'slug', 'summary', 'is_visible',
     ];
 
+    
+
     public function brands()
     {
         return $this->belongsTo('App\User');

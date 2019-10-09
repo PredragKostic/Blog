@@ -29,7 +29,7 @@
     <label for="brand_id">Brand</label>
     <select name="brand_id" id="brand_id" class="form-control js-example-basic-single">
       @foreach($brands as $brand)
-        <option value="{{ $brand->id }}" @if($brand->id == $products->brand_id) selected="selected" @endif>{{ $brand->title }}</option>
+        <option value="{{ $brand->id }}" @if($brand->id == $product->brand_id) selected="selected" @endif>{{ $brand->title }}</option>
       @endforeach
     </select>
     @if($errors->has('category_id'))

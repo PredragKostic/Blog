@@ -36,6 +36,8 @@ Route::group(['middleware' => ['auth']], function () {
 
 });
 
+Route::get('shop/{brandSlug}/{productSlug}/{productId}', 'PagesController@product');
+
 Route::get('{slug1}', 'PagesController@category');
     
 Route::get('{slug1}/{slug2}', 'PagesController@parentCategory');
