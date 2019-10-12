@@ -7,18 +7,19 @@ use App\Category;
 use App\Post;
 use App\Brand;
 use App\Product;
+use Carbon\Carbon;
 
 class PagesController extends Controller
 {
     public function index(){
     	$categories = Category::with('childCategory')->where('parent', null)->where('is_visible', 1)->get();
 
-        $sliders = Post::with('category')->where('is_visible', 1)->orderBy('id', 'desc')->limit(5)->get();
+        $sliders = Post::with('category')->where('published_at', '<', Carbon::now())->where('is_visible', 1)->orderBy('id', 'desc')->limit(5)->get();
 
-        $hotNews = Post::with('category')->where('is_visible', 1)->orderBy('id', 'desc')->limit(2)->get();
+        $hotNews = Post::with('category')->where('published_at', '<', Carbon::now())->where('is_visible', 1)->orderBy('id', 'desc')->limit(2)->get();
     	
 
-        $graziaShop = Product::with('brand')->where('is_visible', 1)->orderBy('id', 'desc')->limit(3)->get();
+        $graziaShop = Product::with('brand')->where('published_at', '<', Carbon::now())->where('is_visible', 1)->orderBy('id', 'desc')->limit(3)->get();
         return view('grazia.pages.home', compact('graziaShop', 'categories', 'sliders', 'hotNews'));
 
     }
